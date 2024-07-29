@@ -1,15 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gradio App on GitHub Pages</title>
+    <title>Gradio 應用展示</title>
     <script
-	type="module"
-	src="https://gradio.s3-us-west-2.amazonaws.com/4.36.1/gradio.js"
+        type="module"
+        src="https://gradio.s3-us-west-2.amazonaws.com/4.36.1/gradio.js"
     ></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            margin-bottom: 0.5rem;
+        }
+        .description {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            text-align: center;
+        }
+        .gradio-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 2rem;
+        }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #34495e;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <gradio-app src="https://jimbogo-stantec-intern.hf.space"></gradio-app>
+    <header>
+        <h1>Gradio 應用展示</h1>
+        <p>探索我們的互動式 AI 模型</p>
+    </header>
+
+    <main>
+        <div class="description">
+            <p>歡迎來到我們的 Gradio 應用展示頁面。這個應用程序允許您與先進的 AI 模型進行互動。請在下方嘗試我們的演示！</p>
+        </div>
+
+        <div class="gradio-container">
+            <gradio-app src="https://jimbogo-stantec-intern.hf.space"></gradio-app>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Gradio 應用展示。保留所有權利。</p>
+    </footer>
 </body>
 </html>
