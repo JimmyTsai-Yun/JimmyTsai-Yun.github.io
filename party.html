@@ -9,30 +9,25 @@ css:
      LOCK SCREEN
 ════════════════════════════════════ -->
 <div id="lock-screen">
-
-  <div class="lock-card">
-    <img src="/assets/img/party-frame.png" alt="" aria-hidden="true" />
-    <div class="lock-card-body">
-      <div class="lock-card-title">You&rsquo;re Invited</div>
-      <div class="lock-card-rule"></div>
-      <p class="lock-card-sub">Invited guests only &mdash; please enter the passcode</p>
+  <div class="lock-inner">
+    <div class="lock-monogram">J &middot; T</div>
+    <div class="lock-rule"></div>
+    <div class="lock-eyebrow">Private Invitation</div>
+    <div class="lock-heading">The Housewarming</div>
+    <div class="lock-form">
+      <input
+        id="pwd-input"
+        class="lock-input"
+        type="password"
+        inputmode="numeric"
+        maxlength="20"
+        placeholder="Passcode"
+        autocomplete="off"
+      />
+      <button class="lock-btn" onclick="checkPassword()">Enter</button>
+      <div class="lock-error" id="lock-error"></div>
     </div>
   </div>
-
-  <div class="lock-form">
-    <input
-      id="pwd-input"
-      class="lock-input"
-      type="password"
-      inputmode="numeric"
-      maxlength="20"
-      placeholder="&middot; &middot; &middot; &middot;"
-      autocomplete="off"
-    />
-    <button class="lock-btn" onclick="checkPassword()">Enter</button>
-    <div class="lock-error" id="lock-error"></div>
-  </div>
-
 </div>
 
 <!-- ══════════════════════════════════
@@ -41,38 +36,44 @@ css:
 <div id="party-content">
 
   <!-- Hero -->
-  <div class="hero-section">
-    <div class="hero-card">
-      <img src="/assets/img/party-frame.png" alt="Housewarming Party Invitation" />
-      <div class="hero-card-text">
-        <div class="hero-main-title">Welcome to Our New Home!</div>
-        <div class="hero-sub">Join us as we celebrate this new chapter</div>
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-title">
+        <span class="hero-word">House</span>
+        <span class="hero-hr"></span>
+        <span class="hero-word hero-word--italic">Warming</span>
+      </div>
+      <div class="hero-bottom">
+        <span class="hero-bottom-label">An Intimate Gathering</span>
+        <span class="hero-bottom-num">2026</span>
       </div>
     </div>
-  </div>
 
-  <!-- Event Details -->
-  <div class="details-section">
-    <div class="section-label">Event Details</div>
-    <div class="detail-table">
-      <div class="detail-row">
-        <span class="detail-key">Date</span>
-        <span class="detail-val">Friday, April 24, 2026</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-key">Time</span>
-        <span class="detail-val">From 6:00 PM</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-key">Location</span>
-        <span class="detail-val">Xingguang City, Zhubei</span>
+    <div class="hero-vr"></div>
+
+    <div class="hero-right">
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Date</span>
+          <span class="hero-meta-value">Friday, April 24</span>
+          <span class="hero-meta-sub">2026</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Time</span>
+          <span class="hero-meta-value">From 6:00 PM</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Location</span>
+          <span class="hero-meta-value">Xingguang City</span>
+          <span class="hero-meta-sub">Zhubei, Hsinchu County</span>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Countdown -->
-  <div class="countdown-section">
-    <div class="section-label">The Party Begins In</div>
+  <section class="countdown-section">
+    <div class="countdown-eyebrow">Until the Party</div>
     <div class="countdown-grid">
       <div class="countdown-unit">
         <span class="countdown-num" id="cd-days">--</span>
@@ -91,27 +92,29 @@ css:
         <span class="countdown-unit-label">Secs</span>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Map -->
-  <div class="map-section">
-    <div class="map-inner">
-      <div class="section-label">Getting Here</div>
-      <div class="map-wrapper">
-        <iframe
-          src="https://maps.google.com/maps?q=新竹縣竹北市星光City大樓&output=embed&z=16&hl=en"
-          allowfullscreen
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
+  <section class="map-section">
+    <div class="map-header">
+      <span class="map-label">Getting Here</span>
     </div>
-  </div>
+    <div class="map-wrapper">
+      <iframe
+        src="https://maps.google.com/maps?q=新竹縣竹北市星光City大樓&output=embed&z=16&hl=en"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <div class="party-footer">
-    <p>Can&rsquo;t wait to see you at our new home</p>
-  </div>
+  <footer class="party-footer">
+    <span class="footer-rule"></span>
+    <p class="footer-text">We look forward to welcoming you.</p>
+    <span class="footer-rule"></span>
+  </footer>
 
 </div>
 
@@ -150,7 +153,7 @@ css:
       sessionStorage.setItem(STORAGE_KEY, '1');
       showContent();
     } else {
-      err.textContent = 'Incorrect passcode \u2014 please try again.';
+      err.textContent = 'Incorrect passcode — please try again.';
       document.getElementById('pwd-input').value = '';
     }
   };
