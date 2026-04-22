@@ -1,146 +1,125 @@
 ---
 layout: minimal
-title: "You're Invited"
+title: "You're Invited — Jimmy's Housewarming"
 css:
   - "/assets/css/party.css"
 ---
 
-<!-- ════════════════════════════════
+<!-- ══════════════════════════════════
      LOCK SCREEN
-════════════════════════════════ -->
+════════════════════════════════════ -->
 <div id="lock-screen">
-  <div class="lock-inner">
 
-    <!-- Geometric seal -->
-    <div class="lock-seal" aria-hidden="true">
-      <div class="lock-seal-circle"></div>
-      <div class="lock-seal-diamond"></div>
-      <div class="lock-seal-dot"></div>
-    </div>
+  <img class="lock-floral" src="/assets/img/party-frame.png" alt="" aria-hidden="true" />
 
-    <p class="lock-eyebrow">Private Invitation</p>
-    <h1 class="lock-headline">You're Invited</h1>
-    <div class="lock-rule"></div>
-    <p class="lock-desc">
-      Invited guests only<br>
-      Please enter the passcode
-    </p>
-
-    <div class="lock-form">
-      <input
-        id="pwd-input"
-        class="lock-input"
-        type="password"
-        inputmode="numeric"
-        maxlength="20"
-        placeholder="— — — —"
-        autocomplete="off"
-        aria-label="Passcode"
-      />
-      <button class="lock-btn" onclick="checkPassword()">
-        <span>Enter</span>
-      </button>
-      <p class="lock-error" id="lock-error" role="alert"></p>
-    </div>
-
+  <div class="lock-ornament">
+    <div class="lock-ornament-line"></div>
+    <div class="lock-ornament-diamond"></div>
+    <div class="lock-ornament-line"></div>
   </div>
+
+  <h1 class="lock-title">You&rsquo;re Invited</h1>
+  <p class="lock-subtitle">Invited guests only &mdash; please enter the passcode</p>
+
+  <div class="lock-form">
+    <input
+      id="pwd-input"
+      class="lock-input"
+      type="password"
+      inputmode="numeric"
+      maxlength="20"
+      placeholder="&middot; &middot; &middot; &middot;"
+      autocomplete="off"
+    />
+    <button class="lock-btn" onclick="checkPassword()">Enter</button>
+    <div class="lock-error" id="lock-error"></div>
+  </div>
+
 </div>
 
-<!-- ════════════════════════════════
+<!-- ══════════════════════════════════
      PARTY CONTENT
-════════════════════════════════ -->
+════════════════════════════════════ -->
 <div id="party-content">
-
-  <!-- Floral Header -->
-  <img
-    class="party-floral-header"
-    src="/assets/img/party-frame.png"
-    alt="Housewarming Party"
-  />
 
   <!-- Hero -->
   <div class="party-hero">
-    <span class="hero-welcome">A Housewarming</span>
-    <h2 class="hero-title">Welcome to<br>Our New Home</h2>
-    <p class="hero-sub">Join us as we celebrate<br>this new chapter</p>
+    <img class="hero-frame-img" src="/assets/img/party-frame.png" alt="Housewarming Party Invitation" />
+    <div class="hero-frame-text">
+      <span class="hero-title">Welcome to Our New Home!</span>
+      <span class="hero-sub">Join us as we celebrate<br>this new chapter</span>
+    </div>
   </div>
 
-  <!-- Divider -->
-  <div class="ornament">
-    <span class="ornament-inner">~</span>
-  </div>
+  <hr class="section-rule" />
 
   <!-- Event Details -->
   <div class="details-section">
-    <p class="section-label">Event Details</p>
+    <div class="section-eyebrow">Event Details</div>
 
     <div class="detail-row">
       <span class="detail-key">Date</span>
+      <span class="detail-dots"></span>
       <span class="detail-val">Friday, April 24, 2026</span>
     </div>
     <div class="detail-row">
       <span class="detail-key">Time</span>
+      <span class="detail-dots"></span>
       <span class="detail-val">From 6:00 PM</span>
     </div>
     <div class="detail-row">
       <span class="detail-key">Location</span>
+      <span class="detail-dots"></span>
       <span class="detail-val">Xingguang City, Zhubei</span>
     </div>
   </div>
 
-  <!-- Divider -->
-  <div class="ornament">
-    <span class="ornament-inner">~</span>
-  </div>
-
   <!-- Countdown -->
   <div class="countdown-section">
-    <p class="section-label">Counting Down</p>
-    <div class="countdown-row">
+    <div class="countdown-eyebrow">The Party Begins In</div>
+    <div class="countdown-grid">
       <div class="countdown-unit">
         <span class="countdown-num" id="cd-days">--</span>
-        <span class="countdown-lbl">Days</span>
+        <span class="countdown-unit-label">Days</span>
       </div>
       <div class="countdown-unit">
         <span class="countdown-num" id="cd-hours">--</span>
-        <span class="countdown-lbl">Hours</span>
+        <span class="countdown-unit-label">Hours</span>
       </div>
       <div class="countdown-unit">
         <span class="countdown-num" id="cd-mins">--</span>
-        <span class="countdown-lbl">Mins</span>
+        <span class="countdown-unit-label">Mins</span>
       </div>
       <div class="countdown-unit">
         <span class="countdown-num" id="cd-secs">--</span>
-        <span class="countdown-lbl">Secs</span>
+        <span class="countdown-unit-label">Secs</span>
       </div>
     </div>
   </div>
 
   <!-- Map -->
   <div class="map-section">
-    <p class="section-label">Getting Here</p>
-    <div class="map-frame">
+    <div class="section-eyebrow">Getting Here</div>
+    <div class="map-wrapper">
       <iframe
         src="https://maps.google.com/maps?q=新竹縣竹北市星光City大樓&output=embed&z=16&hl=en"
         allowfullscreen
         loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Venue location">
+        referrerpolicy="no-referrer-when-downgrade">
       </iframe>
     </div>
   </div>
 
   <!-- Footer -->
   <div class="party-footer">
-    <p class="party-footer-text">Can't wait to see you at our new home</p>
-    <div class="party-footer-rule"></div>
+    <p>Can&rsquo;t wait to see you at our new home</p>
   </div>
 
 </div>
 
-<!-- ════════════════════════════════
+<!-- ══════════════════════════════════
      SCRIPTS
-════════════════════════════════ -->
+════════════════════════════════════ -->
 <script>
 (function () {
   const HASH = '2f5101a71d278dda8021bb4a33932a7a95f485683abe774f565c65f171f001f7';
@@ -155,15 +134,9 @@ css:
   }
 
   function showContent() {
-    const lock = document.getElementById('lock-screen');
-    const content = document.getElementById('party-content');
-    lock.style.transition = 'opacity 0.5s ease';
-    lock.style.opacity = '0';
-    setTimeout(function () {
-      lock.style.display = 'none';
-      content.style.display = 'block';
-      startCountdown();
-    }, 500);
+    document.getElementById('lock-screen').style.display = 'none';
+    document.getElementById('party-content').style.display = 'block';
+    startCountdown();
   }
 
   if (sessionStorage.getItem(STORAGE_KEY) === '1') {
@@ -173,15 +146,14 @@ css:
   window.checkPassword = async function () {
     const val = document.getElementById('pwd-input').value.trim();
     const err = document.getElementById('lock-error');
-    if (!val) { err.textContent = 'Please enter the passcode'; return; }
+    if (!val) { err.textContent = 'Please enter the passcode.'; return; }
     const h = await sha256(val);
     if (h === HASH) {
       sessionStorage.setItem(STORAGE_KEY, '1');
       showContent();
     } else {
-      err.textContent = 'Incorrect passcode — please try again';
+      err.textContent = 'Incorrect passcode \u2014 please try again.';
       document.getElementById('pwd-input').value = '';
-      document.getElementById('pwd-input').focus();
     }
   };
 
@@ -196,19 +168,15 @@ css:
     function tick() {
       const diff = target - Date.now();
       if (diff <= 0) {
-        ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(function(id) {
-          document.getElementById(id).textContent = '00';
+        ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => {
+          document.getElementById(id).textContent = '0';
         });
         return;
       }
-      document.getElementById('cd-days').textContent =
-        String(Math.floor(diff / 86400000)).padStart(2, '0');
-      document.getElementById('cd-hours').textContent =
-        String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
-      document.getElementById('cd-mins').textContent =
-        String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
-      document.getElementById('cd-secs').textContent =
-        String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+      document.getElementById('cd-days').textContent  = Math.floor(diff / 86400000);
+      document.getElementById('cd-hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
+      document.getElementById('cd-mins').textContent  = String(Math.floor((diff % 3600000)  / 60000)).padStart(2,'0');
+      document.getElementById('cd-secs').textContent  = String(Math.floor((diff % 60000)    / 1000)).padStart(2,'0');
     }
     tick();
     setInterval(tick, 1000);
