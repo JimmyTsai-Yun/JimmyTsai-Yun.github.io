@@ -1,127 +1,137 @@
 ---
 layout: minimal
-title: "You're Invited — Jimmy's Housewarming"
+title: "You're Invited"
 css:
   - "/assets/css/party.css"
 ---
 
-<!-- ══════════════════════════════════
+<!-- ════════════════════════════════
      LOCK SCREEN
-════════════════════════════════════ -->
+════════════════════════════════ -->
 <div id="lock-screen">
-  <img class="lock-floral" src="/assets/img/party-frame.png" alt="" aria-hidden="true" />
-  <div class="lock-title">You're Invited</div>
-  <div class="lock-divider"></div>
-  <div class="lock-subtitle">Invited guests only — please enter the passcode</div>
-  <div class="lock-form">
-    <input
-      id="pwd-input"
-      class="lock-input"
-      type="password"
-      inputmode="numeric"
-      maxlength="20"
-      placeholder="· · · ·"
-      autocomplete="off"
-    />
-    <button class="lock-btn" onclick="checkPassword()">Enter</button>
-    <div class="lock-error" id="lock-error"></div>
+  <div class="lock-card">
+    <img class="lock-floral" src="/assets/img/party-frame.png" alt="" aria-hidden="true" />
+    <div class="lock-card-body">
+      <p class="lock-eyebrow">Private Invitation</p>
+      <h1 class="lock-headline">You're Invited</h1>
+      <div class="lock-rule"></div>
+      <p class="lock-desc">
+        Invited guests only<br>
+        Please enter the passcode
+      </p>
+      <input
+        id="pwd-input"
+        class="lock-input"
+        type="password"
+        inputmode="numeric"
+        maxlength="20"
+        placeholder="— — — —"
+        autocomplete="off"
+        aria-label="Passcode"
+      />
+      <button class="lock-btn" onclick="checkPassword()">
+        <span>Enter</span>
+      </button>
+      <p class="lock-error" id="lock-error" role="alert"></p>
+    </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════
+<!-- ════════════════════════════════
      PARTY CONTENT
-════════════════════════════════════ -->
+════════════════════════════════ -->
 <div id="party-content">
 
-  <!-- Hero — floral frame with text overlay -->
+  <!-- Floral Header -->
+  <img
+    class="party-floral-header"
+    src="/assets/img/party-frame.png"
+    alt="Housewarming Party"
+  />
+
+  <!-- Hero -->
   <div class="party-hero">
-    <img class="hero-frame-img" src="/assets/img/party-frame.png" alt="Housewarming Party Invitation" />
-    <div class="hero-frame-text">
-      <span class="hero-script">Welcome to Our New Home!</span>
-      <span class="hero-sub">Join us as we celebrate<br>this new chapter</span>
-    </div>
+    <span class="hero-welcome">A Housewarming</span>
+    <h2 class="hero-title">Welcome to<br>Our New Home</h2>
+    <p class="hero-sub">Join us as we celebrate<br>this new chapter</p>
   </div>
 
-  <!-- Party Info -->
-  <div class="party-section">
-    <div class="section-label">Event Details</div>
-    <div class="info-card">
-      <div class="info-row">
-        <span class="info-icon">📅</span>
-        <div>
-          <span class="info-label">Date</span>
-          <span class="info-value">Friday, April 24, 2026</span>
-        </div>
-      </div>
-      <div class="info-row">
-        <span class="info-icon">🕕</span>
-        <div>
-          <span class="info-label">Time</span>
-          <span class="info-value">From 6:00 PM</span>
-        </div>
-      </div>
-      <div class="info-row">
-        <span class="info-icon">📍</span>
-        <div>
-          <span class="info-label">Location</span>
-          <span class="info-value">Xingguang City, Zhubei</span>
-        </div>
-      </div>
+  <!-- Divider -->
+  <div class="ornament">
+    <span class="ornament-inner">~</span>
+  </div>
+
+  <!-- Event Details -->
+  <div class="details-section">
+    <p class="section-label">Event Details</p>
+
+    <div class="detail-row">
+      <span class="detail-key">Date</span>
+      <span class="detail-val">Friday, April 24, 2026</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-key">Time</span>
+      <span class="detail-val">From 6:00 PM</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-key">Location</span>
+      <span class="detail-val">Xingguang City, Zhubei</span>
     </div>
   </div>
 
   <!-- Divider -->
-  <div class="gold-divider" style="padding: 0 1.5rem;"><span>✦</span></div>
+  <div class="ornament">
+    <span class="ornament-inner">~</span>
+  </div>
 
   <!-- Countdown -->
   <div class="countdown-section">
-    <div class="section-label">Counting Down</div>
-    <div class="countdown-grid">
+    <p class="section-label">Counting Down</p>
+    <div class="countdown-row">
       <div class="countdown-unit">
         <span class="countdown-num" id="cd-days">--</span>
-        <span class="countdown-label">Days</span>
+        <span class="countdown-lbl">Days</span>
       </div>
-      <div class="countdown-sep">·</div>
       <div class="countdown-unit">
         <span class="countdown-num" id="cd-hours">--</span>
-        <span class="countdown-label">Hours</span>
+        <span class="countdown-lbl">Hours</span>
       </div>
-      <div class="countdown-sep">·</div>
       <div class="countdown-unit">
         <span class="countdown-num" id="cd-mins">--</span>
-        <span class="countdown-label">Mins</span>
+        <span class="countdown-lbl">Mins</span>
       </div>
-      <div class="countdown-sep">·</div>
       <div class="countdown-unit">
         <span class="countdown-num" id="cd-secs">--</span>
-        <span class="countdown-label">Secs</span>
+        <span class="countdown-lbl">Secs</span>
       </div>
     </div>
   </div>
 
   <!-- Map -->
-  <div class="party-section">
-    <div class="section-label">Getting Here</div>
-    <div class="map-wrapper">
+  <div class="map-section">
+    <p class="section-label">Getting Here</p>
+    <div class="map-frame">
       <iframe
         src="https://maps.google.com/maps?q=新竹縣竹北市星光City大樓&output=embed&z=16&hl=en"
         allowfullscreen
         loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Venue location">
       </iframe>
     </div>
   </div>
 
   <!-- Footer -->
   <div class="party-footer">
-    Can't wait to see you at our new home ✨
+    <p class="party-footer-text">Can't wait to see you at our new home</p>
+    <div class="party-footer-rule"></div>
   </div>
 
 </div>
 
-<!-- ══════════════════════════════════
+<!-- ════════════════════════════════
      SCRIPTS
-════════════════════════════════════ -->
+════════════════════════════════ -->
 <script>
 (function () {
   const HASH = '2f5101a71d278dda8021bb4a33932a7a95f485683abe774f565c65f171f001f7';
@@ -136,9 +146,15 @@ css:
   }
 
   function showContent() {
-    document.getElementById('lock-screen').style.display = 'none';
-    document.getElementById('party-content').style.display = 'block';
-    startCountdown();
+    const lock = document.getElementById('lock-screen');
+    const content = document.getElementById('party-content');
+    lock.style.transition = 'opacity 0.5s ease';
+    lock.style.opacity = '0';
+    setTimeout(function () {
+      lock.style.display = 'none';
+      content.style.display = 'block';
+      startCountdown();
+    }, 500);
   }
 
   if (sessionStorage.getItem(STORAGE_KEY) === '1') {
@@ -148,14 +164,15 @@ css:
   window.checkPassword = async function () {
     const val = document.getElementById('pwd-input').value.trim();
     const err = document.getElementById('lock-error');
-    if (!val) { err.textContent = 'Please enter the passcode.'; return; }
+    if (!val) { err.textContent = 'Please enter the passcode'; return; }
     const h = await sha256(val);
     if (h === HASH) {
       sessionStorage.setItem(STORAGE_KEY, '1');
       showContent();
     } else {
-      err.textContent = 'Incorrect passcode — please try again.';
+      err.textContent = 'Incorrect passcode — please try again';
       document.getElementById('pwd-input').value = '';
+      document.getElementById('pwd-input').focus();
     }
   };
 
@@ -170,15 +187,19 @@ css:
     function tick() {
       const diff = target - Date.now();
       if (diff <= 0) {
-        ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => {
-          document.getElementById(id).textContent = '0';
+        ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(function(id) {
+          document.getElementById(id).textContent = '00';
         });
         return;
       }
-      document.getElementById('cd-days').textContent  = Math.floor(diff / 86400000);
-      document.getElementById('cd-hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
-      document.getElementById('cd-mins').textContent  = String(Math.floor((diff % 3600000)  / 60000)).padStart(2,'0');
-      document.getElementById('cd-secs').textContent  = String(Math.floor((diff % 60000)    / 1000)).padStart(2,'0');
+      document.getElementById('cd-days').textContent =
+        String(Math.floor(diff / 86400000)).padStart(2, '0');
+      document.getElementById('cd-hours').textContent =
+        String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+      document.getElementById('cd-mins').textContent =
+        String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+      document.getElementById('cd-secs').textContent =
+        String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
     }
     tick();
     setInterval(tick, 1000);
