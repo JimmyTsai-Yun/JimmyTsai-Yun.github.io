@@ -494,6 +494,73 @@ body::before {
   color: var(--ink-mid);
 }
 
+/* ── INTERACTIONS & ANIMATIONS ────────────────── */
+
+/* 1. Wrong password shake */
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  15%     { transform: translateX(-9px); }
+  30%     { transform: translateX(9px); }
+  45%     { transform: translateX(-6px); }
+  60%     { transform: translateX(6px); }
+  75%     { transform: translateX(-3px); }
+  90%     { transform: translateX(3px); }
+}
+.shake { animation: shake 0.45s ease; }
+
+/* 2. Confetti pieces */
+.confetti-piece {
+  position: fixed;
+  top: -20px;
+  z-index: 9999;
+  pointer-events: none;
+  border-radius: 2px;
+  animation: confettiFall linear forwards;
+}
+@keyframes confettiFall {
+  0%   { opacity: 1; transform: translateY(0) rotate(0deg) rotateX(0deg); }
+  85%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(110vh) rotate(720deg) rotateX(360deg); }
+}
+
+/* 3. Countdown seconds pulse */
+@keyframes pulseTick {
+  0%,100% { transform: scale(1); }
+  50%     { transform: scale(1.08); }
+}
+.tick { animation: pulseTick 0.22s ease; }
+
+/* 4. Urgent state — last 24 hours */
+.urgent .countdown-num { color: var(--accent); }
+.urgent .countdown-lbl { color: var(--ink-mid); }
+
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50%     { opacity: 0; }
+}
+.urgent-dot {
+  display: inline-block;
+  width: 5px; height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-right: 0.6rem;
+  animation: blink 1.2s ease infinite;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+
+/* Party started state */
+.party-started-msg {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-style: italic;
+  color: var(--accent);
+  text-align: center;
+  padding: 2.5rem 1rem;
+  letter-spacing: 0.02em;
+}
+
 /* ── RESPONSIVE ────────────────────────────────── */
 @media (max-width: 760px) {
   .hero {

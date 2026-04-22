@@ -155,10 +155,21 @@ css:
     const h = await sha256(val);
     if (h === HASH) {
       sessionStorage.setItem(STORAGE_KEY, '1');
-      showContent();
+      launchConfetti();
+      setTimeout(showContent, 600);
     } else {
       err.textContent = 'Incorrect passcode — please try again.';
       document.getElementById('pwd-input').value = '';
+      // Shake animation
+      var form = document.querySelector('.lock-form');
+      form.classList.remove('shake');
+      void form.offsetWidth; // force reflow
+      form.classList.add('shake');
+      form.addEventListener('animationend', function handler() {
+        form.classList.remove('shake');
+        form.removeEventListener('animationend', handler);
+      });
+      if (navigator.vibrate) navigator.vibrate(300);
     }
   };
 
@@ -168,20 +179,75 @@ css:
     });
   });
 
+  /* ── Confetti ── */
+  function launchConfetti() {
+    var colors = ['#8b3e2a','#c9a96e','#ddd5c8','#f2ece2','#1c1814','#b05a3a'];
+    for (var i = 0; i < 90; i++) {
+      (function() {
+        var el = document.createElement('div');
+        el.className = 'confetti-piece';
+        var size = 4 + Math.random() * 6;
+        el.style.cssText = [
+          'left:' + (Math.random() * 100) + 'vw',
+          'width:' + size + 'px',
+          'height:' + (size * (1.2 + Math.random())) + 'px',
+          'background:' + colors[Math.floor(Math.random() * colors.length)],
+          'animation-delay:' + (Math.random() * 0.4) + 's',
+          'animation-duration:' + (1 + Math.random() * 0.8) + 's',
+          'transform:rotate(' + (Math.random() * 360) + 'deg)'
+        ].join(';');
+        document.body.appendChild(el);
+        el.addEventListener('animationend', function() { el.remove(); });
+      })();
+    }
+  }
+
+  /* ── Countdown ── */
   function startCountdown() {
-    const target = new Date('2026-04-24T18:00:00+08:00').getTime();
+    var target = new Date('2026-04-24T18:00:00+08:00').getTime();
+    var section = document.querySelector('.countdown-section');
+    var secsUnit = document.getElementById('cd-secs').parentElement;
+    var urgentDotAdded = false;
+
     function tick() {
-      const diff = target - Date.now();
+      var diff = target - Date.now();
+
+      // Party has started
       if (diff <= 0) {
-        ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(function(id) {
-          document.getElementById(id).textContent = '0';
-        });
+        var units = document.querySelector('.countdown-units');
+        if (units) {
+          units.innerHTML = '<p class="party-started-msg">The party starts now.</p>';
+        }
         return;
       }
+
+      // Urgent: last 24 hours
+      if (diff < 86400000) {
+        section.classList.add('urgent');
+        if (!urgentDotAdded) {
+          var lbl = document.querySelector('.countdown-section .section-label');
+          if (lbl && !lbl.querySelector('.urgent-dot')) {
+            var dot = document.createElement('span');
+            dot.className = 'urgent-dot';
+            lbl.prepend(dot);
+          }
+          urgentDotAdded = true;
+        }
+      }
+
       document.getElementById('cd-days').textContent  = Math.floor(diff / 86400000);
       document.getElementById('cd-hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
       document.getElementById('cd-mins').textContent  = String(Math.floor((diff % 3600000)  / 60000)).padStart(2,'0');
       document.getElementById('cd-secs').textContent  = String(Math.floor((diff % 60000)    / 1000)).padStart(2,'0');
+
+      // Pulse on seconds unit
+      secsUnit.classList.remove('tick');
+      void secsUnit.offsetWidth;
+      secsUnit.classList.add('tick');
+      secsUnit.addEventListener('animationend', function handler() {
+        secsUnit.classList.remove('tick');
+        secsUnit.removeEventListener('animationend', handler);
+      });
     }
     tick();
     setInterval(tick, 1000);
