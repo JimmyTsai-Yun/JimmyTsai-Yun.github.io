@@ -494,6 +494,58 @@ body::before {
   color: var(--ink-mid);
 }
 
+/* ── LEFT BAR DRAW ANIMATION ───────────────────── */
+@keyframes drawLine {
+  from { height: 0; }
+  to   { height: 100%; }
+}
+.hero-left-col::before {
+  animation: drawLine 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+/* ── LOCK SCREEN TYPING CURSOR ──────────────────── */
+.lock-title--typing::after {
+  content: '|';
+  font-style: normal;
+  color: var(--ink-faint);
+  animation: cursorBlink 0.7s step-end infinite;
+  margin-left: 2px;
+}
+@keyframes cursorBlink {
+  0%,100% { opacity: 1; }
+  50%     { opacity: 0; }
+}
+
+/* ── COPY ADDRESS BUTTON ────────────────────────── */
+.hero-detail-item--location {
+  position: relative;
+}
+.copy-addr-btn {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.6rem;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  background: transparent;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  user-select: none;
+}
+.copy-addr-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.copy-addr-btn.copied {
+  color: var(--bg);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
 /* ── INTERACTIONS & ANIMATIONS ────────────────── */
 
 /* 1. Wrong password shake */

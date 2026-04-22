@@ -13,7 +13,7 @@ css:
     <div class="lock-monogram">JT</div>
     <div class="lock-mono-rule"></div>
     <div class="lock-eyebrow">Private Invitation</div>
-    <div class="lock-title">The Housewarming</div>
+    <div class="lock-title lock-title--typing" id="lock-title"></div>
     <div class="lock-form">
       <input
         id="pwd-input"
@@ -62,9 +62,10 @@ css:
           <span class="hero-detail-key">Time</span>
           <span class="hero-detail-val">From 6:00 PM</span>
         </li>
-        <li class="hero-detail-item">
+        <li class="hero-detail-item hero-detail-item--location">
           <span class="hero-detail-key">Location</span>
           <span class="hero-detail-val">Xingguang City<br>Zhubei, Hsinchu</span>
+          <button class="copy-addr-btn" id="copy-btn" onclick="copyAddress()">Copy Address</button>
         </li>
       </ul>
     </div>
@@ -128,6 +129,7 @@ css:
 (function () {
   const HASH = '2f5101a71d278dda8021bb4a33932a7a95f485683abe774f565c65f171f001f7';
   const STORAGE_KEY = 'party_auth_2026';
+  var wrongAttempts = 0;
 
   async function sha256(str) {
     const buf = await crypto.subtle.digest(
@@ -158,7 +160,10 @@ css:
       launchConfetti();
       setTimeout(showContent, 600);
     } else {
-      err.textContent = 'Incorrect passcode — please try again.';
+      wrongAttempts++;
+      err.textContent = wrongAttempts >= 3
+        ? 'Hint: think of an anniversary.'
+        : 'Incorrect passcode — please try again.';
       document.getElementById('pwd-input').value = '';
       // Shake animation
       var form = document.querySelector('.lock-form');
@@ -177,7 +182,50 @@ css:
     document.getElementById('pwd-input').addEventListener('keydown', function (e) {
       if (e.key === 'Enter') window.checkPassword();
     });
+
+    /* ── Typing effect on lock title ── */
+    var titleEl = document.getElementById('lock-title');
+    var fullText = 'The Housewarming';
+    var idx = 0;
+    var typeTimer = setInterval(function () {
+      titleEl.textContent += fullText[idx];
+      idx++;
+      if (idx >= fullText.length) {
+        clearInterval(typeTimer);
+        // remove cursor after a short pause
+        setTimeout(function () {
+          titleEl.classList.remove('lock-title--typing');
+        }, 1200);
+      }
+    }, 75);
   });
+
+  /* ── Copy address ── */
+  window.copyAddress = function () {
+    var address = '新竹縣竹北市星光City大樓';
+    var btn = document.getElementById('copy-btn');
+    function feedback() {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = 'Copy Address';
+        btn.classList.remove('copied');
+      }, 2000);
+    }
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(address).then(feedback);
+    } else {
+      // fallback for older browsers
+      var ta = document.createElement('textarea');
+      ta.value = address;
+      ta.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      ta.remove();
+      feedback();
+    }
+  };
 
   /* ── Confetti ── */
   function launchConfetti() {
