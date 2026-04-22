@@ -1,6 +1,6 @@
 ---
 layout: minimal
-title: "喬遷派對邀請"
+title: "You're Invited — Jimmy's Housewarming"
 css:
   - "/assets/css/party.css"
 ---
@@ -9,9 +9,10 @@ css:
      LOCK SCREEN
 ════════════════════════════════════ -->
 <div id="lock-screen">
-  <div class="lock-icon">🏠</div>
-  <div class="lock-title">喬遷派對邀請</div>
-  <div class="lock-subtitle">受邀者專屬頁面，請輸入密碼</div>
+  <img class="lock-floral" src="/assets/img/party-frame.png" alt="" aria-hidden="true" />
+  <div class="lock-title">You're Invited</div>
+  <div class="lock-divider"></div>
+  <div class="lock-subtitle">Invited guests only — please enter the passcode</div>
   <div class="lock-form">
     <input
       id="pwd-input"
@@ -19,10 +20,10 @@ css:
       type="password"
       inputmode="numeric"
       maxlength="20"
-      placeholder="••••"
+      placeholder="· · · ·"
       autocomplete="off"
     />
-    <button class="lock-btn" onclick="checkPassword()">進入</button>
+    <button class="lock-btn" onclick="checkPassword()">Enter</button>
     <div class="lock-error" id="lock-error"></div>
   </div>
 </div>
@@ -32,69 +33,78 @@ css:
 ════════════════════════════════════ -->
 <div id="party-content">
 
-  <!-- Hero -->
+  <!-- Hero — floral frame with text overlay -->
   <div class="party-hero">
-    <span class="hero-emoji">🎉</span>
-    <h1>歡迎來我的新家！</h1>
-    <p>期待和你們一起慶祝這個特別的時刻</p>
+    <img class="hero-frame-img" src="/assets/img/party-frame.png" alt="Housewarming Party Invitation" />
+    <div class="hero-frame-text">
+      <span class="hero-script">Welcome to Our New Home!</span>
+      <span class="hero-sub">Join us as we celebrate<br>this new chapter</span>
+    </div>
   </div>
 
-  <!-- Info Cards -->
-  <div class="info-section">
+  <!-- Party Info -->
+  <div class="party-section">
+    <div class="section-label">Event Details</div>
     <div class="info-card">
       <div class="info-row">
         <span class="info-icon">📅</span>
         <div>
-          <span class="info-label">日期</span>
-          <span class="info-value">2026 年 4 月 24 日（週五）</span>
+          <span class="info-label">Date</span>
+          <span class="info-value">Friday, April 24, 2026</span>
         </div>
       </div>
       <div class="info-row">
         <span class="info-icon">🕕</span>
         <div>
-          <span class="info-label">時間</span>
-          <span class="info-value">下午 6:00 起</span>
+          <span class="info-label">Time</span>
+          <span class="info-value">From 6:00 PM</span>
         </div>
       </div>
       <div class="info-row">
         <span class="info-icon">📍</span>
         <div>
-          <span class="info-label">地點</span>
-          <span class="info-value">竹北市 星光 City 大樓</span>
+          <span class="info-label">Location</span>
+          <span class="info-value">Xingguang City, Zhubei</span>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Divider -->
+  <div class="gold-divider" style="padding: 0 1.5rem;"><span>✦</span></div>
+
   <!-- Countdown -->
   <div class="countdown-section">
-    <h2>距離派對還有</h2>
+    <div class="section-label">Counting Down</div>
     <div class="countdown-grid">
       <div class="countdown-unit">
         <span class="countdown-num" id="cd-days">--</span>
-        <span class="countdown-label">天</span>
+        <span class="countdown-label">Days</span>
       </div>
+      <div class="countdown-sep">·</div>
       <div class="countdown-unit">
         <span class="countdown-num" id="cd-hours">--</span>
-        <span class="countdown-label">時</span>
+        <span class="countdown-label">Hours</span>
       </div>
+      <div class="countdown-sep">·</div>
       <div class="countdown-unit">
         <span class="countdown-num" id="cd-mins">--</span>
-        <span class="countdown-label">分</span>
+        <span class="countdown-label">Mins</span>
       </div>
+      <div class="countdown-sep">·</div>
       <div class="countdown-unit">
         <span class="countdown-num" id="cd-secs">--</span>
-        <span class="countdown-label">秒</span>
+        <span class="countdown-label">Secs</span>
       </div>
     </div>
   </div>
 
   <!-- Map -->
-  <div class="map-section">
-    <h2>📍 交通地圖</h2>
+  <div class="party-section">
+    <div class="section-label">Getting Here</div>
     <div class="map-wrapper">
       <iframe
-        src="https://maps.google.com/maps?q=新竹縣竹北市星光City大樓&output=embed&z=16&hl=zh-TW"
+        src="https://maps.google.com/maps?q=新竹縣竹北市星光City大樓&output=embed&z=16&hl=en"
         allowfullscreen
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade">
@@ -104,7 +114,7 @@ css:
 
   <!-- Footer -->
   <div class="party-footer">
-    期待在新家與你相見 ✨
+    Can't wait to see you at our new home ✨
   </div>
 
 </div>
@@ -114,18 +124,15 @@ css:
 ════════════════════════════════════ -->
 <script>
 (function () {
-  /* ── Password check ── */
   const HASH = '2f5101a71d278dda8021bb4a33932a7a95f485683abe774f565c65f171f001f7';
   const STORAGE_KEY = 'party_auth_2026';
 
   async function sha256(str) {
     const buf = await crypto.subtle.digest(
-      'SHA-256',
-      new TextEncoder().encode(str)
+      'SHA-256', new TextEncoder().encode(str)
     );
     return Array.from(new Uint8Array(buf))
-      .map(b => b.toString(16).padStart(2, '0'))
-      .join('');
+      .map(b => b.toString(16).padStart(2, '0')).join('');
   }
 
   function showContent() {
@@ -134,7 +141,6 @@ css:
     startCountdown();
   }
 
-  // Auto-unlock if already verified
   if (sessionStorage.getItem(STORAGE_KEY) === '1') {
     document.addEventListener('DOMContentLoaded', showContent);
   }
@@ -142,52 +148,38 @@ css:
   window.checkPassword = async function () {
     const val = document.getElementById('pwd-input').value.trim();
     const err = document.getElementById('lock-error');
-    if (!val) { err.textContent = '請輸入密碼'; return; }
+    if (!val) { err.textContent = 'Please enter the passcode.'; return; }
     const h = await sha256(val);
     if (h === HASH) {
       sessionStorage.setItem(STORAGE_KEY, '1');
       showContent();
     } else {
-      err.textContent = '密碼不正確，請再試一次';
+      err.textContent = 'Incorrect passcode — please try again.';
       document.getElementById('pwd-input').value = '';
     }
   };
 
-  // Allow Enter key to submit
   document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('pwd-input').addEventListener('keydown', function (e) {
       if (e.key === 'Enter') window.checkPassword();
     });
   });
 
-  /* ── Countdown Timer ── */
   function startCountdown() {
-    // Target: 2026-04-24 18:00 CST (UTC+8)
     const target = new Date('2026-04-24T18:00:00+08:00').getTime();
-
     function tick() {
-      const now  = Date.now();
-      const diff = target - now;
-
+      const diff = target - Date.now();
       if (diff <= 0) {
-        document.getElementById('cd-days').textContent  = '0';
-        document.getElementById('cd-hours').textContent = '0';
-        document.getElementById('cd-mins').textContent  = '0';
-        document.getElementById('cd-secs').textContent  = '0';
+        ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => {
+          document.getElementById(id).textContent = '0';
+        });
         return;
       }
-
-      const days  = Math.floor(diff / 86400000);
-      const hours = Math.floor((diff % 86400000) / 3600000);
-      const mins  = Math.floor((diff % 3600000)  / 60000);
-      const secs  = Math.floor((diff % 60000)    / 1000);
-
-      document.getElementById('cd-days').textContent  = days;
-      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-      document.getElementById('cd-mins').textContent  = String(mins).padStart(2, '0');
-      document.getElementById('cd-secs').textContent  = String(secs).padStart(2, '0');
+      document.getElementById('cd-days').textContent  = Math.floor(diff / 86400000);
+      document.getElementById('cd-hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
+      document.getElementById('cd-mins').textContent  = String(Math.floor((diff % 3600000)  / 60000)).padStart(2,'0');
+      document.getElementById('cd-secs').textContent  = String(Math.floor((diff % 60000)    / 1000)).padStart(2,'0');
     }
-
     tick();
     setInterval(tick, 1000);
   }
