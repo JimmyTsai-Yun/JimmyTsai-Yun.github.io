@@ -10,10 +10,10 @@ css:
 ════════════════════════════════════ -->
 <div id="lock-screen">
   <div class="lock-inner">
-    <div class="lock-monogram">J &middot; T</div>
-    <div class="lock-rule"></div>
+    <div class="lock-monogram">JT</div>
+    <div class="lock-mono-rule"></div>
     <div class="lock-eyebrow">Private Invitation</div>
-    <div class="lock-heading">The Housewarming</div>
+    <div class="lock-title">The Housewarming</div>
     <div class="lock-form">
       <input
         id="pwd-input"
@@ -21,7 +21,7 @@ css:
         type="password"
         inputmode="numeric"
         maxlength="20"
-        placeholder="Passcode"
+        placeholder="passcode"
         autocomplete="off"
       />
       <button class="lock-btn" onclick="checkPassword()">Enter</button>
@@ -36,70 +36,75 @@ css:
 <div id="party-content">
 
   <!-- Hero -->
-  <section class="hero">
-    <div class="hero-left">
-      <div class="hero-title">
-        <span class="hero-word">House</span>
-        <span class="hero-hr"></span>
-        <span class="hero-word hero-word--italic">Warming</span>
-      </div>
-      <div class="hero-bottom">
-        <span class="hero-bottom-label">An Intimate Gathering</span>
-        <span class="hero-bottom-num">2026</span>
-      </div>
+  <section class="hero reveal">
+    <div class="hero-top-rule"></div>
+    <div class="hero-label">You Are Cordially Invited</div>
+
+    <div class="hero-date">
+      <span class="hero-month">APR</span>
+      <span class="hero-day">24</span>
     </div>
 
-    <div class="hero-vr"></div>
+    <div class="hero-rule"></div>
+    <h1 class="hero-title">Housewarming Party</h1>
+    <p class="hero-sub">Friday &nbsp;&middot;&nbsp; 2026 &nbsp;&middot;&nbsp; Zhubei</p>
+    <div class="hero-bottom-rule"></div>
+  </section>
 
-    <div class="hero-right">
-      <div class="hero-meta">
-        <div class="hero-meta-item">
-          <span class="hero-meta-label">Date</span>
-          <span class="hero-meta-value">Friday, April 24</span>
-          <span class="hero-meta-sub">2026</span>
-        </div>
-        <div class="hero-meta-item">
-          <span class="hero-meta-label">Time</span>
-          <span class="hero-meta-value">From 6:00 PM</span>
-        </div>
-        <div class="hero-meta-item">
-          <span class="hero-meta-label">Location</span>
-          <span class="hero-meta-value">Xingguang City</span>
-          <span class="hero-meta-sub">Zhubei, Hsinchu County</span>
-        </div>
+  <!-- Event Details -->
+  <section class="details-section reveal">
+    <div class="section-header">
+      <span class="section-label">Event Details</span>
+    </div>
+    <div class="details-table">
+      <div class="detail-row">
+        <span class="detail-key">Date</span>
+        <span class="detail-val">Friday, April 24, 2026</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-key">Time</span>
+        <span class="detail-val">From 6:00 PM</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-key">Location</span>
+        <span class="detail-val">Xingguang City, Zhubei<br>Hsinchu County</span>
       </div>
     </div>
   </section>
 
   <!-- Countdown -->
-  <section class="countdown-section">
-    <div class="countdown-eyebrow">Until the Party</div>
-    <div class="countdown-grid">
-      <div class="countdown-unit">
-        <span class="countdown-num" id="cd-days">--</span>
-        <span class="countdown-unit-label">Days</span>
+  <section class="countdown-section reveal">
+    <div class="countdown-inner">
+      <div class="section-header">
+        <span class="section-label">Until the Party</span>
       </div>
-      <div class="countdown-unit">
-        <span class="countdown-num" id="cd-hours">--</span>
-        <span class="countdown-unit-label">Hours</span>
-      </div>
-      <div class="countdown-unit">
-        <span class="countdown-num" id="cd-mins">--</span>
-        <span class="countdown-unit-label">Mins</span>
-      </div>
-      <div class="countdown-unit">
-        <span class="countdown-num" id="cd-secs">--</span>
-        <span class="countdown-unit-label">Secs</span>
+      <div class="countdown-units">
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-days">--</span>
+          <span class="countdown-lbl">Days</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-hours">--</span>
+          <span class="countdown-lbl">Hours</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-mins">--</span>
+          <span class="countdown-lbl">Mins</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-secs">--</span>
+          <span class="countdown-lbl">Secs</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Map -->
-  <section class="map-section">
-    <div class="map-header">
-      <span class="map-label">Getting Here</span>
+  <section class="map-section reveal">
+    <div class="section-header">
+      <span class="section-label">Getting Here</span>
     </div>
-    <div class="map-wrapper">
+    <div class="map-frame">
       <iframe
         src="https://maps.google.com/maps?q=新竹縣竹北市星光City大樓&output=embed&z=16&hl=en"
         allowfullscreen
@@ -110,10 +115,10 @@ css:
   </section>
 
   <!-- Footer -->
-  <footer class="party-footer">
-    <span class="footer-rule"></span>
+  <footer class="party-footer reveal">
+    <span class="footer-ornament">· · ·</span>
     <p class="footer-text">We look forward to welcoming you.</p>
-    <span class="footer-rule"></span>
+    <span class="footer-ornament">· · ·</span>
   </footer>
 
 </div>
@@ -136,7 +141,8 @@ css:
 
   function showContent() {
     document.getElementById('lock-screen').style.display = 'none';
-    document.getElementById('party-content').style.display = 'block';
+    const content = document.getElementById('party-content');
+    content.style.display = 'block';
     startCountdown();
   }
 
@@ -169,7 +175,7 @@ css:
     function tick() {
       const diff = target - Date.now();
       if (diff <= 0) {
-        ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => {
+        ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(function(id) {
           document.getElementById(id).textContent = '0';
         });
         return;
