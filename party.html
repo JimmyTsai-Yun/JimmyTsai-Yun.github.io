@@ -9,16 +9,24 @@ css:
      LOCK SCREEN
 ════════════════════════════════ -->
 <div id="lock-screen">
-  <div class="lock-card">
-    <img class="lock-floral" src="/assets/img/party-frame.png" alt="" aria-hidden="true" />
-    <div class="lock-card-body">
-      <p class="lock-eyebrow">Private Invitation</p>
-      <h1 class="lock-headline">You're Invited</h1>
-      <div class="lock-rule"></div>
-      <p class="lock-desc">
-        Invited guests only<br>
-        Please enter the passcode
-      </p>
+  <div class="lock-inner">
+
+    <!-- Geometric seal -->
+    <div class="lock-seal" aria-hidden="true">
+      <div class="lock-seal-circle"></div>
+      <div class="lock-seal-diamond"></div>
+      <div class="lock-seal-dot"></div>
+    </div>
+
+    <p class="lock-eyebrow">Private Invitation</p>
+    <h1 class="lock-headline">You're Invited</h1>
+    <div class="lock-rule"></div>
+    <p class="lock-desc">
+      Invited guests only<br>
+      Please enter the passcode
+    </p>
+
+    <div class="lock-form">
       <input
         id="pwd-input"
         class="lock-input"
@@ -34,6 +42,7 @@ css:
       </button>
       <p class="lock-error" id="lock-error" role="alert"></p>
     </div>
+
   </div>
 </div>
 

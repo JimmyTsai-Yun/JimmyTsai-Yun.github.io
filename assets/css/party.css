@@ -39,116 +39,166 @@ body {
   padding: 2rem 1.25rem;
   background: var(--ink);
   background-image:
-    radial-gradient(ellipse at 20% 50%, rgba(184,150,90,0.06) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(184,150,90,0.04) 0%, transparent 50%);
+    radial-gradient(ellipse at 30% 60%, rgba(184,150,90,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 25%, rgba(184,150,90,0.05) 0%, transparent 45%);
 }
 
-.lock-card {
+.lock-inner {
   width: 100%;
-  max-width: 420px;
-  background: var(--cream);
-  border: 1px solid var(--gold);
-  box-shadow:
-    0 0 0 6px var(--ink),
-    0 0 0 7px rgba(184,150,90,0.3),
-    0 32px 80px rgba(0,0,0,0.6);
+  max-width: 340px;
+  text-align: center;
   opacity: 0;
-  transform: translateY(-16px);
-  animation: cardReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
-  overflow: hidden;
+  transform: translateY(20px);
+  animation: lockReveal 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
 }
 
-@keyframes cardReveal {
+@keyframes lockReveal {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.lock-floral {
-  width: 100%;
-  display: block;
-  border-bottom: 1px solid var(--rule);
+/* ── Geometric seal mark ── */
+.lock-seal {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 2.5rem;
 }
 
-.lock-card-body {
-  padding: 2.5rem 2.5rem 3rem;
-  text-align: center;
+.lock-seal-circle {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(184,150,90,0.5);
+}
+
+.lock-seal-diamond {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 1px solid var(--gold);
+  transform: rotate(45deg);
+}
+
+.lock-seal-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* Tick marks at N/S/E/W of circle */
+.lock-seal::before,
+.lock-seal::after {
+  content: '';
+  position: absolute;
+  background: rgba(184,150,90,0.45);
+}
+.lock-seal::before {
+  width: 1px;
+  height: 8px;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 80px 0 rgba(184,150,90,0.45);
+}
+.lock-seal::after {
+  height: 1px;
+  width: 8px;
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 80px 0 0 rgba(184,150,90,0.45);
 }
 
 .lock-eyebrow {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 200;
-  font-size: 0.65rem;
-  letter-spacing: 0.3em;
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
   text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1.25rem;
+  color: rgba(184,150,90,0.65);
+  margin-bottom: 1rem;
 }
 
 .lock-headline {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
-  font-size: 2.4rem;
-  line-height: 1.1;
-  color: var(--ink);
-  margin-bottom: 0.75rem;
   font-style: italic;
+  font-size: 2.6rem;
+  line-height: 1.1;
+  color: var(--cream);
 }
 
 .lock-rule {
-  width: 40px;
+  width: 32px;
   height: 1px;
-  background: var(--gold);
-  margin: 1.25rem auto;
+  background: rgba(184,150,90,0.45);
+  margin: 1.75rem auto;
 }
 
 .lock-desc {
   font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  font-weight: 200;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--muted);
-  line-height: 1.8;
-  margin-bottom: 2.25rem;
+  color: rgba(248,243,235,0.32);
+  line-height: 2;
+  margin-bottom: 2.75rem;
+}
+
+.lock-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .lock-input {
   display: block;
   width: 100%;
-  padding: 0.75rem 0;
+  padding: 0.85rem 0;
   background: transparent;
   border: none;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid rgba(184,150,90,0.3);
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 200;
-  font-size: 1.4rem;
-  letter-spacing: 0.5em;
+  font-size: 1.5rem;
+  letter-spacing: 0.6em;
   text-align: center;
-  color: var(--ink);
+  color: var(--cream);
   outline: none;
   transition: border-color 0.3s;
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
+  caret-color: var(--gold);
 }
 
 .lock-input:focus { border-bottom-color: var(--gold); }
 
 .lock-input::placeholder {
-  color: var(--rule);
-  letter-spacing: 0.3em;
+  color: rgba(248,243,235,0.12);
+  letter-spacing: 0.4em;
 }
 
 .lock-btn {
   display: inline-block;
-  padding: 0.7rem 2.5rem;
+  padding: 0.75rem 2.75rem;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
-  font-size: 0.7rem;
-  letter-spacing: 0.3em;
+  font-size: 0.62rem;
+  letter-spacing: 0.4em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: var(--cream);
   background: transparent;
-  border: 1px solid var(--gold);
+  border: 1px solid rgba(184,150,90,0.45);
   cursor: pointer;
-  transition: background 0.25s, color 0.25s;
+  transition: border-color 0.3s, color 0.3s;
   position: relative;
   overflow: hidden;
 }
@@ -158,20 +208,20 @@ body {
   position: absolute;
   inset: 0;
   background: var(--gold);
-  transform: translateX(-100%);
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.lock-btn:hover::before { transform: translateX(0); }
-.lock-btn:hover { color: var(--cream); }
-
+.lock-btn:hover { border-color: var(--gold); color: var(--ink); }
+.lock-btn:hover::before { transform: scaleX(1); }
 .lock-btn span { position: relative; z-index: 1; }
 
 .lock-error {
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  color: var(--error);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: rgba(180,100,100,0.8);
   margin-top: 1.25rem;
   min-height: 1em;
   text-transform: uppercase;
