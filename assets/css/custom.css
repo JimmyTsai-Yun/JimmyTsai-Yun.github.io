@@ -172,14 +172,8 @@ body {
    =========================== */
 
 .about-main {
-  padding-top: 5.5rem;
+  padding-top: 5rem;
   padding-bottom: 4rem;
-}
-
-@media (min-width: 1200px) {
-  .about-main {
-    padding-top: 8.5rem;
-  }
 }
 
 /* Profile photo — float right on desktop */
