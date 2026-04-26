@@ -444,22 +444,31 @@ body {
   filter: invert(1);
 }
 
-/* News table (custom component, not covered by BJ vars) */
+/* About page text — explicit overrides since custom.css sets hardcoded colors */
+[data-theme="dark"] .about-desc { color: #c8c8c8 !important; }
+[data-theme="dark"] .about-bio { color: #d8d8d8 !important; }
+[data-theme="dark"] .about-bio strong { color: #e8e8e8 !important; }
+
+/* News table — wipe all row/cell backgrounds; container provides the dark fill */
 [data-theme="dark"] .news-table {
-  background: #222223;
-  border-color: #333;
+  background: #252527;
+  border-color: #3a3a3b;
 }
-[data-theme="dark"] .news-table .table th {
-  color: #777;
+[data-theme="dark"] .news-table table,
+[data-theme="dark"] .news-table tbody,
+[data-theme="dark"] .news-table tr,
+[data-theme="dark"] .news-table td,
+[data-theme="dark"] .news-table th {
+  background-color: transparent !important;
+  border-color: #3a3a3b !important;
 }
-[data-theme="dark"] .news-table .table td {
-  color: #ccc;
-}
+[data-theme="dark"] .news-table .table th { color: #888; }
+[data-theme="dark"] .news-table .table td { color: #d0d0d0; }
 
 /* Publications */
 [data-theme="dark"] .pub-title { color: #e8e8e8; }
 [data-theme="dark"] .pub-authors { color: #aaa; }
-[data-theme="dark"] .pub-desc { color: #bbb; }
+[data-theme="dark"] .pub-desc { color: #c8c8c8; }
 
 /* Post cards */
 [data-theme="dark"] .post-card {
