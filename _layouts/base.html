@@ -26,6 +26,12 @@ common-js:
 {% include head.html %}
 
 <body>
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
   {% include gtm_body.html %}
 
   {% include nav.html %}
