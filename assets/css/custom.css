@@ -356,9 +356,11 @@ body {
 .resume-main {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 56px); /* viewport minus navbar */
+  flex: 1;
   padding: 0;
+  padding-top: 56px; /* account for fixed navbar */
   margin: 0;
+  overflow: hidden;
 }
 
 .resume-topbar {
