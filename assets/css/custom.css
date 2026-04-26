@@ -176,6 +176,12 @@ body {
   padding-bottom: 4rem;
 }
 
+@media (min-width: 1200px) {
+  .about-main {
+    padding-top: 8.5rem;
+  }
+}
+
 /* Profile photo — float right on desktop */
 .about-profile-img-wrap {
   float: right;
@@ -390,157 +396,81 @@ body {
    Dark Mode
    =========================== */
 
-[data-theme="dark"] body {
-  background-color: #1a1a1b !important;
-  color: #e0e0e0 !important;
+/* Override Beautiful Jekyll's CSS custom properties — all BJ styles update automatically */
+[data-theme="dark"] {
+  --page-col: #1a1a1b;
+  --text-col: #e0e0e0;
+  --link-col: #d84fd4;
+  --hover-col: #f080f0;
+  --navbar-col: #1a1a1b;
+  --navbar-text-col: #e0e0e0;
+  --navbar-border-col: #333333;
+  --footer-col: #111111;
+  --footer-text-col: #999999;
+  --footer-link-col: #cccccc;
+  --footer-hover-col: #d84fd4;
 }
 
-/* Navbar */
+/* Navbar background override (BJ sets it via CSS var but also via config-injected style) */
 [data-theme="dark"] .navbar-custom {
   background-color: #1a1a1b !important;
   border-bottom-color: #333 !important;
-}
-[data-theme="dark"] .navbar-custom .nav-link,
-[data-theme="dark"] .navbar-custom .navbar-brand {
-  color: #e0e0e0 !important;
-}
-[data-theme="dark"] .navbar-custom .nav-link:hover,
-[data-theme="dark"] .navbar-custom .navbar-brand:hover {
-  color: #d84fd4 !important;
 }
 [data-theme="dark"] .navbar-toggler-icon {
   filter: invert(1);
 }
 
-/* Page background & text */
-[data-theme="dark"] .page-content,
-[data-theme="dark"] main,
-[data-theme="dark"] .container,
-[data-theme="dark"] .container-md {
-  background-color: #1a1a1b;
-  color: #e0e0e0;
-}
-
-/* Links */
-[data-theme="dark"] a {
-  color: #d84fd4;
-}
-[data-theme="dark"] a:hover {
-  color: #f080f0;
-}
-
-/* About page */
-[data-theme="dark"] .about-desc {
-  color: #aaa;
-}
-[data-theme="dark"] .about-bio {
-  color: #ccc;
-}
-[data-theme="dark"] .about-social a {
-  color: #bbb;
-}
-[data-theme="dark"] .about-social a:hover {
-  color: #d84fd4;
-}
-[data-theme="dark"] .about-divider {
-  border-color: #333;
-}
-[data-theme="dark"] .about-section-title {
-  color: #e0e0e0;
-}
-
-/* News table */
+/* News table (custom component, not covered by BJ vars) */
 [data-theme="dark"] .news-table {
   background: #222223;
   border-color: #333;
 }
 [data-theme="dark"] .news-table .table th {
-  color: #888;
+  color: #777;
 }
 [data-theme="dark"] .news-table .table td {
   color: #ccc;
 }
-[data-theme="dark"] .news-table .table tr {
-  border-color: #333;
-}
 
 /* Publications */
-[data-theme="dark"] .pub-title {
-  color: #e8e8e8;
-}
-[data-theme="dark"] .pub-authors {
-  color: #aaa;
-}
-[data-theme="dark"] .pub-desc {
-  color: #bbb;
-}
+[data-theme="dark"] .pub-title { color: #e8e8e8; }
+[data-theme="dark"] .pub-authors { color: #aaa; }
+[data-theme="dark"] .pub-desc { color: #bbb; }
 
 /* Post cards */
 [data-theme="dark"] .post-card {
   background: #252526;
   border-color: #333;
 }
-[data-theme="dark"] .post-card-title {
-  color: #e8e8e8;
-}
+[data-theme="dark"] .post-card-title { color: #e8e8e8; }
 [data-theme="dark"] .post-card-subtitle,
-[data-theme="dark"] .post-card-excerpt {
-  color: #bbb;
-}
-[data-theme="dark"] .post-card-footer {
-  border-top-color: #333;
-}
+[data-theme="dark"] .post-card-excerpt { color: #bbb; }
+[data-theme="dark"] .post-card-footer { border-top-color: #333; }
+[data-theme="dark"] .post-card-meta { color: #777; }
 [data-theme="dark"] .post-card-tag {
   background: #3a1a3a;
   color: #d84fd4;
 }
-[data-theme="dark"] .post-card-tag:hover {
-  background: #4a2a4a;
-}
-[data-theme="dark"] .post-card-meta {
-  color: #777;
-}
-
-/* Headers, paragraphs in posts/pages */
-[data-theme="dark"] h1, [data-theme="dark"] h2,
-[data-theme="dark"] h3, [data-theme="dark"] h4,
-[data-theme="dark"] h5, [data-theme="dark"] h6 {
-  color: #e8e8e8;
-}
-[data-theme="dark"] p {
-  color: #ccc;
-}
+[data-theme="dark"] .post-card-tag:hover { background: #4a2a4a; }
 
 /* Code blocks */
 [data-theme="dark"] pre,
 [data-theme="dark"] code {
   background: #2d2d2e;
-  color: #e0e0e0;
   border-color: #444;
 }
 
-/* Resume page */
+/* About page custom elements */
+[data-theme="dark"] .about-divider { border-color: #333; }
+[data-theme="dark"] .about-social a { color: #bbb; }
+[data-theme="dark"] .about-social a:hover { color: #d84fd4; }
+
+/* Resume */
 [data-theme="dark"] .resume-container {
   border-color: #444;
   background: #222;
 }
-[data-theme="dark"] .resume-download .btn-outline-secondary {
-  border-color: #555;
-  color: #ccc;
-}
 
-/* Search box */
-[data-theme="dark"] #nav-search-input {
-  background: #2a2a2b;
-  color: #e0e0e0;
-  border-color: #444;
-}
-
-/* Dark mode toggle icon - visible state hint */
-.theme-toggle-btn {
-  opacity: 0.75;
-  transition: opacity 0.2s;
-}
-.theme-toggle-btn:hover {
-  opacity: 1;
-}
+/* Toggle button style */
+.theme-toggle-btn { opacity: 0.75; transition: opacity 0.2s; }
+.theme-toggle-btn:hover { opacity: 1; }
